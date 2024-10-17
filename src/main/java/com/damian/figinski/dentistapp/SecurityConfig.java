@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -44,17 +43,6 @@ public class SecurityConfig {
     }
 
     @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-        return new InMemoryUserDetailsManager(
-                org.springframework.security.core.userdetails.User
-                        .withUsername("admin")
-                        .password(passwordEncoder().encode("password"))
-                        .roles("ADMIN")
-                        .build()
-        );
-    }
-
-    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(patientDetailsService);
@@ -66,8 +54,7 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder
-                .authenticationProvider(authenticationProvider()) // Dodajemy bazodanowy provider dla pacjentów
-                .userDetailsService(inMemoryUserDetailsManager());
+                .authenticationProvider(authenticationProvider()); // Dodajemy bazodanowy provider dla pacjentów
 
         return authenticationManagerBuilder.build();
     }
