@@ -47,18 +47,18 @@ public class User implements UserDetails {
 
     // ----- Relacje specyficzne dla dentysty -----
 
-    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Service> servicesOffered; // Lista usług oferowanych przez dentystę
 
-    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Schedule> schedules; // Harmonogram dostępności dentysty
 
-    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Appointment> appointments; // Wizyty umawiane przez pacjentów
 
     // ----- Relacje specyficzne dla pacjenta -----
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Appointment> patientAppointments; // Wizyty umówione przez pacjenta
 
     @Override

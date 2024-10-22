@@ -3,31 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Dental Management App</title>
+    <title>Admin Dashboard - Dental Management App</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <header class="bg-primary text-white text-center py-3">
     <div class="container">
-        <h1>Welcome, <span th:text="${username}"></span></h1> <!-- Wyświetla nazwę zalogowanego użytkownika -->
+        <h1>Welcome, Admin <span th:text="${username}"></span></h1> <!-- Wyświetla nazwę zalogowanego użytkownika -->
         <nav>
-            <a href="/logout" class="btn btn-danger">Logout</a>
+            <a href="/logout" class="btn btn-dark">Logout</a>
         </nav>
     </div>
 </header>
 
 <div class="container mt-5">
-    <h2>Your Dashboard</h2>
-    <p>Here you can manage your appointments, view your profile, and more.</p>
-    <!-- Treści specyficzne dla użytkownika -->
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Menu nawigacyjne dla admina -->
+            <div class="list-group">
+                <a href="/admin/dashboard" class="list-group-item list-group-item-action active">Dashboard</a>
+                <a href="/admin/dentists" class="list-group-item list-group-item-action">Manage Dentists</a>
+                <a href="/admin/admin_patients" class="list-group-item list-group-item-action">Manage Patients</a>
+                <a href="/admin/admin_appointments" class="list-group-item list-group-item-action">Manage
+                    Appointments</a>
+                <a href="/admin/admin_services" class="list-group-item list-group-item-action">Manage Services</a>
+                <a href="/admin/admin_reports" class="list-group-item list-group-item-action">View Reports</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <!-- Główna treść dla dashboardu -->
+            <h2>Admin Dashboard</h2>
+            <p>Here you can manage the entire Dental Management System, including users, dentists, patients,
+                appointments, services, and view reports.</p>
+        </div>
+    </div>
 </div>
 
 <footer class="bg-dark text-white text-center py-3 mt-5">
     <p>&copy; 2024 Dental Management App - All Rights Reserved</p>
 </footer>
 
+<!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
