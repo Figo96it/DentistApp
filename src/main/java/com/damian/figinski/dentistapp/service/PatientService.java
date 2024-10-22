@@ -1,7 +1,7 @@
 package com.damian.figinski.dentistapp.service;
 
-import com.damian.figinski.dentistapp.model.Patient;
-import com.damian.figinski.dentistapp.repository.PatientRepository;
+import com.damian.figinski.dentistapp.model.User;
+import com.damian.figinski.dentistapp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,26 +9,26 @@ import java.util.List;
 @Service
 public class PatientService {
 
-    private  final PatientRepository patientRepository;
+    private  final UserRepository userRepository;
 
     // Constructor Injection
-    public PatientService(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
+    public PatientService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public List<Patient> findAll() {
-        return patientRepository.findAll();
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
-    public Patient save(Patient patient) {
-        return patientRepository.save(patient);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
-    public Patient findById(Long id) {
-        return patientRepository.findById(id).orElse(null);
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 
     public void deleteById(Long id) {
-        patientRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 }
